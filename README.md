@@ -1,12 +1,35 @@
-# Carnicles Coming Soon
-Install: `npm install` · Dev: `npm run dev` · Build: `npm run build` (output: `dist/`)
-Config (launch date, live-site URL, status, social links, form endpoint): `src/config.ts`
+# Carnicles — Launch Calendar Website
 
-## Countdown
-Leave `launchDate: ""` until the launch date is confirmed. The page will show **Launching Soon**. When ready, set an ISO date/time with the India Standard Time offset, for example `"2026-12-01T18:00:00+05:30"`. The countdown updates every second and switches to **WE'RE LIVE** after the target time, with a button linking to `liveSiteUrl`.
+A responsive React + Vite + TypeScript website concept for Carnicles. It includes:
+- Premium automotive editorial homepage
+- October / November / December 2026 launch calendar
+- Launch cards and a featured detail panel
+- Instagram, Facebook and YouTube links
+- Lightweight lane-dodging mini-game
+- Responsive mobile layout
 
-## Cloudflare Pages
-1. Push this folder to GitHub/GitLab. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
-2. Framework preset: Vite. Build command: `npm run build`. Output directory: `dist`. Node 18+.
-3. Deploy, then Custom domains → add `carnicleauto.com`.
-`public/_redirects` makes refresh/direct URLs serve the page. Replace `public/robots.txt` when the full site launches.
+## Important: launch data
+The supplied calendar entries are intentionally marked as watchlist / expected placeholders. Do not publish unverified car names, prices, or launch dates as facts. Edit `src/launches.ts` and replace each placeholder with a model and details after verifying the manufacturer's official announcement or a reliable current report.
+
+## Run locally on Windows PowerShell
+Open PowerShell in this project folder and run:
+
+```powershell
+npm.cmd install
+npm.cmd run build
+npm.cmd run dev
+```
+
+Open the local URL printed by Vite (usually http://localhost:5173).
+
+## Deploy
+Upload the project source to the existing GitHub repository that is connected to Cloudflare Pages/Workers. Include `src`, `public`, `index.html`, `package.json`, `package-lock.json` (if generated), `tsconfig*.json`, and `vite.config.ts`. Do not upload `node_modules`.
+Build command: `npm run build`
+Output directory: `dist`
+
+For a Workers static-assets deployment, use the existing project's current deployment method/settings rather than changing database or unrelated Worker routes.
+
+## Notes
+- The car graphic is a custom lightweight SVG illustration, not a 3D model.
+- Automotive photos are loaded from Unsplash image URLs and require internet access.
+- The mini-game is a simple interactive lane selector prototype, not a full physics-based racing game.
