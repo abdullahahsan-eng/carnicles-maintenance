@@ -1,3 +1,0 @@
-# Temporary page: keep the real site indexable once launched (replace this file then).
-User-agent: *
-Disallow:
