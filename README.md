@@ -1,35 +1,14 @@
-# Carnicles — Launch Calendar Website
+# Carnicles Coming Soon
+Install: `npm install` · Dev: `npm run dev` · Build: `npm run build` (output: `dist/`)
+Config (launch date, status, social links, form endpoint): `src/config.ts`
 
-A responsive React + Vite + TypeScript website concept for Carnicles. It includes:
-- Premium automotive editorial homepage
-- October / November / December 2026 launch calendar
-- Launch cards and a featured detail panel
-- Instagram, Facebook and YouTube links
-- Lightweight lane-dodging mini-game
-- Responsive mobile layout
+## Cloudflare Pages
+1. Push this folder to GitHub/GitLab. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
+2. Framework preset: Vite. Build command: `npm run build`. Output directory: `dist`. Node 18+.
+3. Deploy, then Custom domains → add `carnicleauto.com`.
+`public/_redirects` makes refresh/direct URLs serve the page. Replace `public/robots.txt` when the full site launches.
 
-## Important: launch data
-The supplied calendar entries are intentionally marked as watchlist / expected placeholders. Do not publish unverified car names, prices, or launch dates as facts. Edit `src/launches.ts` and replace each placeholder with a model and details after verifying the manufacturer's official announcement or a reliable current report.
-
-## Run locally on Windows PowerShell
-Open PowerShell in this project folder and run:
-
-```powershell
-npm.cmd install
-npm.cmd run build
-npm.cmd run dev
-```
-
-Open the local URL printed by Vite (usually http://localhost:5173).
-
-## Deploy
-Upload the project source to the existing GitHub repository that is connected to Cloudflare Pages/Workers. Include `src`, `public`, `index.html`, `package.json`, `package-lock.json` (if generated), `tsconfig*.json`, and `vite.config.ts`. Do not upload `node_modules`.
-Build command: `npm run build`
-Output directory: `dist`
-
-For a Workers static-assets deployment, use the existing project's current deployment method/settings rather than changing database or unrelated Worker routes.
-
-## Notes
-- The car graphic is a custom lightweight SVG illustration, not a 3D model.
-- Automotive photos are loaded from Unsplash image URLs and require internet access.
-- The mini-game is a simple interactive lane selector prototype, not a full physics-based racing game.
+## Upgrade notes
+- Featured car: catalogue in `src/cars.ts`, rotation settings in `src/config.ts` (`featured`). Weekly mode is computed in the visitor's browser from the date; it does not fetch new cars — add cars in `cars.ts` and redeploy. To use real photos, add a `frames` list (evenly spaced angles, full turn) to a car.
+- Social links: `src/config.ts` → `social` (empty = "Link coming soon", not clickable).
+- Racing sprites: `src/sprites.ts`; collision/spawn logic: `src/raceLogic.ts`.
